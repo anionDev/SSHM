@@ -1,0 +1,68 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Entire repository",
+		},
+		{
+			"path": "./SSHM",
+			"name": "SSHM",
+		}
+	],
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Build all codeunits",
+				"command": "SCBuildCodeunits",
+				"args": [
+					"--buildenvironment",
+					"Development"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder}",
+				},
+			},
+			{
+				"label": "SSHM: Update dependencies",
+				"command": "python",
+				"args": [
+					"UpdateDependencies.py"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder}/SSHM/Other",
+				},
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug current python-file",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal"
+			},
+			{
+				"name": "Debug current bash-script",
+				"type": "bashdb",
+				"request": "launch",
+				"program": "${file}",
+				"cwd": "${workspaceFolder}"
+			}
+		]
+	},
+	"settings": {
+		"spellright.documentTypes": [
+			"markdown",
+			"plaintext",
+		],
+		"spellright.language": [
+			"en",
+		],
+	}
+}
